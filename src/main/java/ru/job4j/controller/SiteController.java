@@ -3,7 +3,7 @@ package ru.job4j.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import ru.job4j.model.Site;
@@ -20,7 +20,9 @@ import static org.apache.commons.lang.RandomStringUtils.randomAlphanumeric;
 public class SiteController {
     private final static int LOGIN_LENGTH = 10;
     private final static int PASSWORD_LENGTH = 10;
+
     private final SiteService service;
+    private final BCryptPasswordEncoder encoder;
 
     @PostMapping("/registration")
     public ResponseEntity<String> register(@RequestBody Site site) {
@@ -36,7 +38,8 @@ public class SiteController {
         String login = randomAlphanumeric(LOGIN_LENGTH);
         site.setLogin(login);
         String password = randomAlphanumeric(PASSWORD_LENGTH);
-        site.setPassword(password);
+        String safePassword = encoder.encode(password);
+        site.setPassword(safePassword);
         service.save(site);
         response.put("registration", true);
         response.put("login", login);
