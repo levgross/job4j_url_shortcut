@@ -36,4 +36,8 @@ public class SiteService {
     public Optional<Site> findByUrl(String url) {
         return repository.findByUrl(url);
     }
+
+    public Optional<Site> findByLogin(String login) {
+        return repository.findByLogin(login);
+    }
 }

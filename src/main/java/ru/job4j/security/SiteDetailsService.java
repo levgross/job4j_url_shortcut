@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import ru.job4j.model.Site;
 import ru.job4j.repository.SiteRepository;
 
+import java.util.Optional;
+
 import static java.util.Collections.emptyList;
 
 @Service
@@ -17,10 +19,10 @@ public class SiteDetailsService implements UserDetailsService {
     private final SiteRepository repository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Site site = repository.findByLogin(username);
-        if (site == null) {
+        Optional<Site> site = repository.findByLogin(username);
+        if (site.isEmpty()) {
             throw new UsernameNotFoundException(username);
         }
-        return new User(site.getLogin(), site.getPassword(), emptyList());
+        return new User(site.get().getLogin(), site.get().getPassword(), emptyList());
     }
 }
