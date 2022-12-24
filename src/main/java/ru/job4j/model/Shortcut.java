@@ -1,8 +1,9 @@
 package ru.job4j.model;
 
-import lombok.*;
-import lombok.EqualsAndHashCode.Include;
-
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -11,12 +12,13 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Site {
+public class Shortcut {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Include
+    @EqualsAndHashCode.Include
     private int id;
     private String url;
-    private String login;
-    private String password;
+    private String code;
+    @ManyToOne
+    private Site site;
 }
