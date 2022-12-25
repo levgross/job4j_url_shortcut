@@ -21,4 +21,5 @@ public class Shortcut {
     private String code;
     @ManyToOne
     private Site site;
+    int count;
 }

@@ -16,7 +16,7 @@ public class Site {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Include
     private int id;
-    private String url;
+    private String site;
     private String login;
     private String password;
 }

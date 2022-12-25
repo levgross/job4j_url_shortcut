@@ -1,6 +1,8 @@
 package ru.job4j.service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import ru.job4j.model.Site;
 import ru.job4j.repository.SiteRepository;
@@ -33,11 +35,16 @@ public class SiteService {
         return repository.findById(id);
     }
 
-    public Optional<Site> findByUrl(String url) {
-        return repository.findByUrl(url);
+    public Optional<Site> findBySite(String site) {
+        return repository.findBySite(site);
     }
 
     public Optional<Site> findByLogin(String login) {
         return repository.findByLogin(login);
+    }
+
+    public Optional<Site> findInContext() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return findByLogin((String) auth.getPrincipal());
     }
 }

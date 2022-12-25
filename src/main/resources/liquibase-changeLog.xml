@@ -9,4 +9,5 @@
     <include file="db/002_dml_insert_site.sql" relativeToChangelogFile="true"/>
 	<include file="db/003_ddl_create_shortcut_table.sql" relativeToChangelogFile="true"/>
 	<include file="db/004_dml_insert_shortcut.sql" relativeToChangelogFile="true"/>
+	<include file="db/005_ddl_add_column_count_to_shortcut.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

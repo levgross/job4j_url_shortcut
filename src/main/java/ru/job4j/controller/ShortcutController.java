@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.model.Shortcut;
 import ru.job4j.model.ShortcutDTOUrl;
@@ -39,8 +37,7 @@ public class ShortcutController {
         shortcut.setUrl(url);
         String code = randomAlphanumeric(SHORTCUT_LENGTH);
         shortcut.setCode(code);
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        shortcut.setSite(siteService.findByLogin((String) auth.getPrincipal()).get());
+        shortcut.setSite(siteService.findInContext().get());
         service.save(shortcut);
         response.put("code", code);
         return new ResponseEntity<>(
