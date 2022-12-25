@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -17,6 +18,7 @@ public class Shortcut {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private int id;
+    @NotBlank(message = "Site must be not empty")
     private String url;
     private String code;
     @ManyToOne

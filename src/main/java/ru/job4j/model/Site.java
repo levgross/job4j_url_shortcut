@@ -1,10 +1,16 @@
 package ru.job4j.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.EqualsAndHashCode.Include;
+import lombok.NoArgsConstructor;
 
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -16,6 +22,7 @@ public class Site {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Include
     private int id;
+    @NotBlank(message = "Site must be not empty")
     private String site;
     private String login;
     private String password;

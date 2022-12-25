@@ -1,6 +1,7 @@
 package ru.job4j.controller;
 
 import lombok.AllArgsConstructor;
+import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -8,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import ru.job4j.model.Site;
 import ru.job4j.service.SiteService;
-import org.json.JSONObject;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.apache.commons.lang.RandomStringUtils.randomAlphanumeric;
@@ -25,7 +26,8 @@ public class SiteController {
     private final BCryptPasswordEncoder encoder;
 
     @PostMapping("/registration")
-    public ResponseEntity<String> register(@RequestBody Site site) {
+
+    public ResponseEntity<String> register(@Valid @RequestBody Site site) {
         JSONObject response = new JSONObject();
         if (site.getSite() == null) {
             throw new NullPointerException("Site name must must be not empty!");
