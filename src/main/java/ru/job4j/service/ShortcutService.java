@@ -3,6 +3,7 @@ package ru.job4j.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.job4j.model.Shortcut;
+import ru.job4j.model.Site;
 import ru.job4j.repository.ShortcutRepository;
 
 import java.util.List;
@@ -29,11 +30,19 @@ public class ShortcutService {
         return (List<Shortcut>) repository.findAll();
     }
 
+    public List<Shortcut> findAllBySite(Site site) {
+        return repository.findAllBySite(site);
+    }
+
     public Optional<Shortcut> findByUrl(String url) {
         return repository.findByUrl(url);
     }
 
     public Optional<Shortcut> findByCode(String code) {
         return repository.findByCode(code);
+    }
+
+    public void incrementCount(int shortcutId) {
+        repository.incrementCount(shortcutId);
     }
 }
