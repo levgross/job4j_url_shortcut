@@ -29,6 +29,9 @@ public class ShortcutController {
     public ResponseEntity<String> convert(@RequestBody ShortcutDTOUrl shortcutDTOUrl) {
         JSONObject response = new JSONObject();
         String url = shortcutDTOUrl.getUrl();
+        if (url == null) {
+            throw new NullPointerException("Url must be not empty!");
+        }
         var shortcutOpt = service.findByUrl(url);
         if (shortcutOpt.isPresent()) {
             response.put("code", shortcutOpt.get().getCode());

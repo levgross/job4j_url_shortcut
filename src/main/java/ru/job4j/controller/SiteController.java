@@ -27,6 +27,9 @@ public class SiteController {
     @PostMapping("/registration")
     public ResponseEntity<String> register(@RequestBody Site site) {
         JSONObject response = new JSONObject();
+        if (site.getSite() == null) {
+            throw new NullPointerException("Site name must must be not empty!");
+        }
         if (service.findBySite(site.getSite()).isPresent()) {
             response.put("registration", false);
             response.put("message", "Site is registered already!");
