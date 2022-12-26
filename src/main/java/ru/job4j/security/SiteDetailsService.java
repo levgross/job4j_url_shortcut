@@ -13,10 +13,26 @@ import java.util.Optional;
 
 import static java.util.Collections.emptyList;
 
+/**
+ * Сервис для определения модели, которая используется, как пользователь сервиса,
+ * и определения, какое поле используется в качестве логина.
+ */
 @Service
 @AllArgsConstructor
 public class SiteDetailsService implements UserDetailsService {
+    /**
+     * Хранилище сайтов-пользователей.
+     * @see ru.job4j.repository.SiteRepository
+     */
     private final SiteRepository repository;
+
+    /**
+     * Выполняет поиск пользователя по логину. Возвращает UserDetail с парой логин-пароль, если поиск успешный.
+     * Или возвращает UsernameNotFoundException, если нет.
+     * @param username логин сайта-пользователя.
+     * @return объект UserDetail с указанными параметрами
+     * @throws UsernameNotFoundException - если сайта-пользователя с таким логином нет в хранилище.
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Site> site = repository.findByLogin(username);

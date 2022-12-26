@@ -16,7 +16,11 @@ import org.springframework.context.annotation.Bean;
 import static ru.job4j.security.JWTAuthenticationFilter.REDIRECT_URL;
 import static ru.job4j.security.JWTAuthenticationFilter.SIGN_UP_URL;
 
-
+/**
+ * Активирует и конфигурирует WebSecurity для всего проекта.
+ * @author Lev Grossevich
+ * @version 1.0
+ */
 @EnableWebSecurity
 @AllArgsConstructor
 public class WebSecurity extends WebSecurityConfigurerAdapter {

@@ -18,13 +18,37 @@ import java.util.List;
 
 import static org.apache.commons.lang.RandomStringUtils.randomAlphanumeric;
 
+/**
+ * Контроллер обработки шорткатов.
+ * @see ru.job4j.model.Shortcut
+ * @author Lev Grossevich
+ * @version 1.0
+ */
 @RestController
 @AllArgsConstructor
 public class ShortcutController {
+    /**
+     * Количество символов уникального кода, который ассоциирован с URL-ссылкой.
+     */
     private final static int SHORTCUT_LENGTH = 7;
+    /**
+     * Сервис обработки шорткатов.
+     * @see ru.job4j.service.ShortcutService
+     */
     private final ShortcutService service;
+    /**
+     * Сервис обработки сайтов-пользователей.
+     * @see ru.job4j.service.SiteService
+     */
     private final SiteService siteService;
 
+    /**
+     * Возвращает их хранилища уникальный код, который ассоциирован с предоставленной URL-ссылкой,
+     * если URL ранее была зарегистрирована.
+     * Если URL-ссылка новая, сохраняет её в новом шоркате и возвращает пользователю код.
+     * @param shortcutDTOUrl тело JSON-объекта с URL-ссылкой.
+     * @return JSON-объект с уникальным кодом, ассоциированным с URL-ссылкой.
+     */
     @PostMapping("/convert")
     public ResponseEntity<String> convert(@RequestBody ShortcutDTOUrl shortcutDTOUrl) {
         JSONObject response = new JSONObject();
@@ -53,6 +77,12 @@ public class ShortcutController {
         );
     }
 
+    /**
+     * Переадресовывает пользователя на URL-адрес, ассоциированный с введенным кодом.
+     * В шорткате с указанным кодом увеличивает на 1 счетчик вызовов - count.
+     * @param code уникальный код, ассоциированный с URL-ссылкой.
+     * @return ResponseEntity, который переадресовывает пользователя на URL-адрес, ассоциированный с введенным кодом.
+     */
     @GetMapping("/redirect/{code}")
     public ResponseEntity<Void> redirect(@PathVariable String code) {
         var shortcutOpt = service.findByCode(code);
@@ -66,6 +96,10 @@ public class ShortcutController {
         return ResponseEntity.status(HttpStatus.FOUND).location(URI.create(shortcut.getUrl())).build();
     }
 
+    /**
+     * Возвращает статистику вызовов по каждой URL-ссылке, которую регистрировал данный пользователь.
+     * @return JSON-объект с количеством вызовов по каждой url-ссылке, которую регистрировал данный пользователь.
+     */
     @GetMapping("/statistic")
     public List<Statistics> statistic() {
         List<Statistics> statisticsList = new ArrayList<>();

@@ -23,12 +23,29 @@ import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 
 @AllArgsConstructor
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-
+    /**
+     * Секретный ключ для генерации токенов.
+     */
     public static final String SECRET = "SecretKeyToGenJWTs";
+    /**
+     * Срок действия токена с момента авторизации в миллисекундах.
+     */
     public static final long EXPIRATION_TIME = 864_000_000;
+    /**
+     * Префикс токена.
+     */
     public static final String TOKEN_PREFIX = "Bearer ";
+    /**
+     * Хэдер токена.
+     */
     public static final String HEADER_STRING = "Authorization";
+    /**
+     * URL для регистрации пользователя.
+     */
     public static final String SIGN_UP_URL = "/site/registration";
+    /**
+     * URL для переадресации с шортката на ассоциированный с ним URL.
+     */
     public static final String REDIRECT_URL = "/redirect/**";
 
     private AuthenticationManager auth;
