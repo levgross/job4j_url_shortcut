@@ -1,4 +1,4 @@
-package ru.job4j.security;
+package ru.job4j.shortcut.security;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -6,8 +6,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import ru.job4j.model.Site;
-import ru.job4j.repository.SiteRepository;
+import ru.job4j.shortcut.model.Site;
+import ru.job4j.shortcut.repository.SiteRepository;
 
 import java.util.Optional;
 
@@ -22,7 +22,7 @@ import static java.util.Collections.emptyList;
 public class SiteDetailsService implements UserDetailsService {
     /**
      * Хранилище сайтов-пользователей.
-     * @see ru.job4j.repository.SiteRepository
+     * @see SiteRepository
      */
     private final SiteRepository repository;
 

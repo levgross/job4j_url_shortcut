@@ -1,4 +1,4 @@
-package ru.job4j.handler;
+package ru.job4j.shortcut.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package ru.job4j.model;
+package ru.job4j.shortcut.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,11 +1,11 @@
-package ru.job4j.service;
+package ru.job4j.shortcut.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import ru.job4j.model.Site;
-import ru.job4j.repository.SiteRepository;
+import ru.job4j.shortcut.model.Site;
+import ru.job4j.shortcut.repository.SiteRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +21,7 @@ import java.util.Optional;
 public class SiteService {
     /**
      * Хранилище сайтов-пользователей.
-     * @see ru.job4j.repository.SiteRepository
+     * @see SiteRepository
      */
     private final SiteRepository repository;
 

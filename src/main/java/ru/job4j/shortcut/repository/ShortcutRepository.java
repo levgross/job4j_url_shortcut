@@ -1,18 +1,18 @@
-package ru.job4j.repository;
+package ru.job4j.shortcut.repository;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
-import ru.job4j.model.Shortcut;
-import ru.job4j.model.Site;
+import ru.job4j.shortcut.model.Shortcut;
+import ru.job4j.shortcut.model.Site;
 
 import java.util.Optional;
 import java.util.List;
 
 /**
  * Хранилище шорткатов.
- * @see ru.job4j.model.Shortcut
+ * @see Shortcut
  * @author Lev Grossevich
  * @version 1.0
  */

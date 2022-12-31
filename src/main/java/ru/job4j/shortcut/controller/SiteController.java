@@ -1,4 +1,4 @@
-package ru.job4j.controller;
+package ru.job4j.shortcut.controller;
 
 import lombok.AllArgsConstructor;
 import org.json.JSONObject;
@@ -8,8 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import ru.job4j.model.Site;
-import ru.job4j.service.SiteService;
+import ru.job4j.shortcut.model.Site;
+import ru.job4j.shortcut.service.SiteService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -18,7 +18,7 @@ import static org.apache.commons.lang.RandomStringUtils.randomAlphanumeric;
 
 /**
  * Контроллер обработки сайтов-пользователей.
- * @see ru.job4j.model.Site
+ * @see Site
  * @author Lev Grossevich
  * @version 1.0
  */
@@ -37,7 +37,7 @@ public class SiteController {
 
     /**
      * Сервис обработки сайтов-пользователей.
-     * @see ru.job4j.service.SiteService
+     * @see SiteService
      */
     private final SiteService service;
     /**

@@ -1,4 +1,4 @@
-package ru.job4j;
+package ru.job4j.shortcut;
 
 import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.boot.SpringApplication;
@@ -11,7 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.sql.DataSource;
 
 @SpringBootApplication
-public class Job4jUrlShortcutApplication extends  SpringBootServletInitializer {
+public class Job4jUrlShortcutApplication extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(Job4jUrlShortcutApplication.class);

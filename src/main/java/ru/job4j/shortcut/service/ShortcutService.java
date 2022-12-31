@@ -1,17 +1,17 @@
-package ru.job4j.service;
+package ru.job4j.shortcut.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.job4j.model.Shortcut;
-import ru.job4j.model.Site;
-import ru.job4j.repository.ShortcutRepository;
+import ru.job4j.shortcut.model.Shortcut;
+import ru.job4j.shortcut.model.Site;
+import ru.job4j.shortcut.repository.ShortcutRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 /**
  * Сервис обработки шорткатов.
- * @see ru.job4j.model.Shortcut
+ * @see Shortcut
  * @author Lev Grossevich
  * @version 1.0
  */
@@ -20,7 +20,7 @@ import java.util.Optional;
 public class ShortcutService {
     /**
      * Хранилище шорткатов.
-     * @see ru.job4j.repository.ShortcutRepository
+     * @see ShortcutRepository
      */
     private final ShortcutRepository repository;
 

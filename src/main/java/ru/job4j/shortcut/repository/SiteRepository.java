@@ -1,14 +1,14 @@
-package ru.job4j.repository;
+package ru.job4j.shortcut.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import ru.job4j.model.Site;
+import ru.job4j.shortcut.model.Site;
 
 import java.util.List;
 import java.util.Optional;
 
 /**
  * Хранилище сайтов-пользователей.
- * @see ru.job4j.model.Site
+ * @see Site
  * @author Lev Grossevich
  * @version 1.0
  */

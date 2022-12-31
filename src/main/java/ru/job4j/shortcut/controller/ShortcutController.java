@@ -1,16 +1,16 @@
-package ru.job4j.controller;
+package ru.job4j.shortcut.controller;
 
 import lombok.AllArgsConstructor;
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.job4j.model.Shortcut;
-import ru.job4j.model.ShortcutDTOUrl;
-import ru.job4j.model.Site;
-import ru.job4j.model.Statistics;
-import ru.job4j.service.ShortcutService;
-import ru.job4j.service.SiteService;
+import ru.job4j.shortcut.model.Shortcut;
+import ru.job4j.shortcut.model.ShortcutDTOUrl;
+import ru.job4j.shortcut.model.Site;
+import ru.job4j.shortcut.model.Statistics;
+import ru.job4j.shortcut.service.ShortcutService;
+import ru.job4j.shortcut.service.SiteService;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ import static org.apache.commons.lang.RandomStringUtils.randomAlphanumeric;
 
 /**
  * Контроллер обработки шорткатов.
- * @see ru.job4j.model.Shortcut
+ * @see Shortcut
  * @author Lev Grossevich
  * @version 1.0
  */
@@ -33,12 +33,12 @@ public class ShortcutController {
     private final static int SHORTCUT_LENGTH = 7;
     /**
      * Сервис обработки шорткатов.
-     * @see ru.job4j.service.ShortcutService
+     * @see ShortcutService
      */
     private final ShortcutService service;
     /**
      * Сервис обработки сайтов-пользователей.
-     * @see ru.job4j.service.SiteService
+     * @see SiteService
      */
     private final SiteService siteService;
 
