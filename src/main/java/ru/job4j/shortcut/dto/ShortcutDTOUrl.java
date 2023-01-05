@@ -1,4 +1,4 @@
-package ru.job4j.shortcut.model;
+package ru.job4j.shortcut.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

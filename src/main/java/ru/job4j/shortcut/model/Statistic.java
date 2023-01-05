@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Statistics {
+public class Statistic {
     /**
      * Прямая URL-ссылка.
      */

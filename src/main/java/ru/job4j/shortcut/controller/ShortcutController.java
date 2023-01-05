@@ -6,9 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.shortcut.model.Shortcut;
-import ru.job4j.shortcut.model.ShortcutDTOUrl;
+import ru.job4j.shortcut.dto.ShortcutDTOUrl;
 import ru.job4j.shortcut.model.Site;
-import ru.job4j.shortcut.model.Statistics;
+import ru.job4j.shortcut.model.Statistic;
 import ru.job4j.shortcut.service.ShortcutService;
 import ru.job4j.shortcut.service.SiteService;
 
@@ -101,11 +101,11 @@ public class ShortcutController {
      * @return JSON-объект с количеством вызовов по каждой url-ссылке, которую регистрировал данный пользователь.
      */
     @GetMapping("/statistic")
-    public List<Statistics> statistic() {
-        List<Statistics> statisticsList = new ArrayList<>();
+    public List<Statistic> statistic() {
+        List<Statistic> statisticList = new ArrayList<>();
         Site site = siteService.findInContext().get();
         List<Shortcut> shortcuts = service.findAllBySite(site);
-        shortcuts.forEach((s) ->  statisticsList.add(new Statistics(s.getUrl(), s.getCount())));
-        return statisticsList;
+        shortcuts.forEach((s) ->  statisticList.add(new Statistic(s.getUrl(), s.getCount())));
+        return statisticList;
     }
 }

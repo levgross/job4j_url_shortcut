@@ -43,5 +43,5 @@ public class Shortcut {
     /**
      * Счетчик вызовов уникального кода.
      */
-    int count;
+    private int count;
 }
