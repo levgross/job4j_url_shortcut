@@ -1,4 +1,4 @@
-package ru.job4j.shortcut.security;
+package ru.job4j.shortcut.configuration;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpMethod;
@@ -12,17 +12,19 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.context.annotation.Bean;
+import ru.job4j.shortcut.security.JWTAuthenticationFilter;
+import ru.job4j.shortcut.security.JWTAuthorizationFilter;
+import ru.job4j.shortcut.security.SiteDetailsService;
 
 /**
- * Активирует и конфигурирует WebSecurity для всего проекта.
+ * Активирует и конфигурирует Security для всего проекта.
  * @author Lev Grossevich
  * @version 1.0
  */
 @EnableWebSecurity
 @AllArgsConstructor
-public class WebSecurity extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     private SiteDetailsService detailsService;
-    private BCryptPasswordEncoder encoder;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -38,7 +40,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(detailsService).passwordEncoder(encoder);
+        auth.userDetailsService(detailsService).passwordEncoder(passwordEncoder());
     }
 
     @Bean
@@ -46,5 +48,10 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
         return source;
+    }
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }
