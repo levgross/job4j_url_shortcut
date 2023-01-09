@@ -9,8 +9,8 @@ import ru.job4j.shortcut.model.Shortcut;
 import ru.job4j.shortcut.dto.ShortcutDTOUrl;
 import ru.job4j.shortcut.model.Site;
 import ru.job4j.shortcut.model.Statistic;
-import ru.job4j.shortcut.service.ShortcutService;
-import ru.job4j.shortcut.service.SiteService;
+import ru.job4j.shortcut.service.SimpleShortcutService;
+import ru.job4j.shortcut.service.SimpleSiteService;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -33,14 +33,14 @@ public class ShortcutController {
     private final static int SHORTCUT_LENGTH = 7;
     /**
      * Сервис обработки шорткатов.
-     * @see ShortcutService
+     * @see SimpleShortcutService
      */
-    private final ShortcutService service;
+    private final SimpleShortcutService service;
     /**
      * Сервис обработки сайтов-пользователей.
-     * @see SiteService
+     * @see SimpleSiteService
      */
-    private final SiteService siteService;
+    private final SimpleSiteService siteService;
 
     /**
      * Возвращает их хранилища уникальный код, который ассоциирован с предоставленной URL-ссылкой,
