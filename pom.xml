@@ -9,8 +9,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ru.job4j.shortcut</groupId>
-    <artifactId>job4j_url_shortcut</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>shortcut</artifactId>
+    <version>1.0</version>
     <name>URL Shortcut</name>
     <description>URL Shortcut</description>
     <packaging>jar</packaging>
